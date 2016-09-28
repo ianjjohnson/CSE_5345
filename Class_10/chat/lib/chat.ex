@@ -1,17 +1,16 @@
 defmodule Chat do
 
-  def start name do
-      Node.connect :"server@10.8.5.211"
+  def start do
+      Node.connect :"dt1@10.8.123.154"
       rec = spawn fn -> recMessage end
-      Process.monitor(rec)
-      send {ChatServer, :"server@10.8.5.211"}, {rec, :connect, name}
+      send {ChatServer, :"dt1@10.8.123.154"}, {rec, :connect, "Harambe"}
       sendMessage(rec)
   end
 
   def sendMessage rec do
 
       m = IO.gets "You:"
-      send {ChatServer, :"server@10.8.5.211"}, {rec, :say, m}
+      send {ChatServer, :"dt1@10.8.123.154"}, {rec, :say, m}
 
       sendMessage rec
 
