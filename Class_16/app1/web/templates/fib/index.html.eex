@@ -1,0 +1,5 @@
+<h1>Your Fibonacci Numbers!</h1>
+
+<p>
+  <%= @n %>th fibbonaci number is <%= @result %>
+</p>
