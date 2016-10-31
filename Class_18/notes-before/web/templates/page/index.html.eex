@@ -1,0 +1,23 @@
+<%= if @current_user do %>
+
+    <h2> Welcome, <%= @current_user.name %> </h2>
+    <img src="<%= @current_user.avatar %>" class="img-circle" />
+    <%= link "Your notes…",
+    to: note_path(@conn, :index),
+    class: "btn btn-lg btn-primary"
+    %>
+
+    <%= link "Logout",
+    to: auth_path(@conn, :delete, []),
+    method: :delete,
+    class: "btn btn-lg btn-primary"
+    %>
+<% else %>
+
+    <%= link "Login with GitHub",
+    to: "/auth/github",
+    method: :delete,
+    class: "btn btn-lg btn-primary"
+    %>
+
+<% end%>
